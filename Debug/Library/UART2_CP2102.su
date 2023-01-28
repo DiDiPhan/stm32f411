@@ -1,0 +1,6 @@
+../Library/UART2_CP2102.c:6:6:DMA_UART_Rx_Init	32	static
+../Library/UART2_CP2102.c:23:6:UART_Rx_interrput_Init	16	static
+../Library/UART2_CP2102.c:33:6:UART_Init	32	static
+../Library/UART2_CP2102.c:60:6:UART_SendData	24	static
+../Library/UART2_CP2102.c:71:6:UART_ReadBytes	40	static
+../Library/UART2_CP2102.c:91:6:USART2_IRQHandler	16	static

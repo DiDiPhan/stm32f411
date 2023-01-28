@@ -1,0 +1,3 @@
+../Library/SPI1.c:4:6:SPI1_Init	40	static
+../Library/SPI1.c:29:9:SPI1_SensorRead	32	static
+../Library/SPI1.c:55:6:SPI1_SensorWrite	32	static
