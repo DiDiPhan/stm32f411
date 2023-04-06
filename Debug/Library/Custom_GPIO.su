@@ -1,0 +1,2 @@
+../Library/Custom_GPIO.c:4:6:Led_Init	24	static
+../Library/Custom_GPIO.c:18:6:Led_Ctrl	24	static

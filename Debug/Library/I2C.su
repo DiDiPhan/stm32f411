@@ -1,0 +1,2 @@
+../Library/I2C.c:3:6:I2C_Init	40	static
+../Library/I2C.c:36:9:I2C_Read	40	static
