@@ -23,7 +23,7 @@ void Button_Init() {
 	//mode: output
 	uint32_t* GPIOA_MODER = (uint32_t*)0x40020000;
 	*GPIOA_MODER &= ~(1 << 0);
-	//pull-up - pull-down
+	//no pull-up - pull-down
 	uint32_t* GPIOA_PUPDR = (uint32_t*)0x4002000c;
 	*GPIOA_PUPDR &= ~(0b11 << 0);
 
