@@ -437,11 +437,11 @@ int main(void)
   **/
 
   //I2C
-  const uint8_t WHO_AM_I = 0x4f;
- 8000536:	234f      	movs	r3, #79	; 0x4f
+  const uint8_t WHO_AM_I = 0xf;
+ 8000536:	230f      	movs	r3, #15
  8000538:	71fb      	strb	r3, [r7, #7]
-  const uint8_t addressSensor = 0b0011110;//0b0011001
- 800053a:	231e      	movs	r3, #30
+  const uint8_t addressSensor = 0b0011001;
+ 800053a:	2319      	movs	r3, #25
  800053c:	71bb      	strb	r3, [r7, #6]
   const uint8_t data = I2C_Read(addressSensor, WHO_AM_I);
  800053e:	79fa      	ldrb	r2, [r7, #7]
@@ -3000,7 +3000,7 @@ void Button_Init() {
  80012de:	f023 0201 	bic.w	r2, r3, #1
  80012e2:	68fb      	ldr	r3, [r7, #12]
  80012e4:	601a      	str	r2, [r3, #0]
-	//pull-up - pull-down
+	//no pull-up - pull-down
 	uint32_t* GPIOA_PUPDR = (uint32_t*)0x4002000c;
  80012e6:	4b09      	ldr	r3, [pc, #36]	; (800130c <Button_Init+0x58>)
  80012e8:	60bb      	str	r3, [r7, #8]
@@ -3213,7 +3213,7 @@ void I2C_Init() {
  8001452:	f003 0302 	and.w	r3, r3, #2
  8001456:	607b      	str	r3, [r7, #4]
  8001458:	687b      	ldr	r3, [r7, #4]
-	uint32_t* GPIOB_MODER = (uint32_t)0x40020400;
+	uint32_t* GPIOB_MODER = (uint32_t*)0x40020400;
  800145a:	4b30      	ldr	r3, [pc, #192]	; (800151c <I2C_Init+0xe4>)
  800145c:	61fb      	str	r3, [r7, #28]
 	//MODER: PB6 & PB9
@@ -3230,7 +3230,7 @@ void I2C_Init() {
  8001472:	69fb      	ldr	r3, [r7, #28]
  8001474:	601a      	str	r2, [r3, #0]
 	//ALTERNATE 4: PB6 & PB9
-	uint32_t* GPIOB_AFRL = (uint32_t)0x40020420;
+	uint32_t* GPIOB_AFRL = (uint32_t*)0x40020420;
  8001476:	4b2a      	ldr	r3, [pc, #168]	; (8001520 <I2C_Init+0xe8>)
  8001478:	61bb      	str	r3, [r7, #24]
 	*GPIOB_AFRL &= ~(0b1111 << 24);
@@ -3246,7 +3246,7 @@ void I2C_Init() {
  800148e:	69bb      	ldr	r3, [r7, #24]
  8001490:	601a      	str	r2, [r3, #0]
 
-	uint32_t* GPIOB_AFRH = (uint32_t)0x40020424;
+	uint32_t* GPIOB_AFRH = (uint32_t*)0x40020424;
  8001492:	4b24      	ldr	r3, [pc, #144]	; (8001524 <I2C_Init+0xec>)
  8001494:	617b      	str	r3, [r7, #20]
 	*GPIOB_AFRH &= ~(0b1111 << 4);
@@ -3276,13 +3276,13 @@ void I2C_Init() {
  80014c2:	f403 1300 	and.w	r3, r3, #2097152	; 0x200000
  80014c6:	603b      	str	r3, [r7, #0]
  80014c8:	683b      	ldr	r3, [r7, #0]
-	uint32_t* I2C1_CR1 = (uint32_t)0x40005400;
+	uint32_t* I2C1_CR1 = (uint32_t*)0x40005400;
  80014ca:	4b17      	ldr	r3, [pc, #92]	; (8001528 <I2C_Init+0xf0>)
  80014cc:	613b      	str	r3, [r7, #16]
-	uint32_t* I2C1_CR2 = (uint32_t)0x40005404;
+	uint32_t* I2C1_CR2 = (uint32_t*)0x40005404;
  80014ce:	4b17      	ldr	r3, [pc, #92]	; (800152c <I2C_Init+0xf4>)
  80014d0:	60fb      	str	r3, [r7, #12]
-	uint32_t* I2C1_CCR = (uint32_t)0x4000541c;
+	uint32_t* I2C1_CCR = (uint32_t*)0x4000541c;
  80014d2:	4b17      	ldr	r3, [pc, #92]	; (8001530 <I2C_Init+0xf8>)
  80014d4:	60bb      	str	r3, [r7, #8]
 
@@ -3344,16 +3344,16 @@ uint8_t I2C_Read(uint8_t address, uint8_t cmd) {
  800153e:	71fb      	strb	r3, [r7, #7]
  8001540:	4613      	mov	r3, r2
  8001542:	71bb      	strb	r3, [r7, #6]
-	uint32_t* I2C1_CR1 = (uint32_t)0x40005400;
+	uint32_t* I2C1_CR1 = (uint32_t*)0x40005400;
  8001544:	4b46      	ldr	r3, [pc, #280]	; (8001660 <I2C_Read+0x12c>)
  8001546:	61fb      	str	r3, [r7, #28]
-	uint32_t* I2C1_SR1 = (uint32_t)0x40005414;
+	uint32_t* I2C1_SR1 = (uint32_t*)0x40005414;
  8001548:	4b46      	ldr	r3, [pc, #280]	; (8001664 <I2C_Read+0x130>)
  800154a:	61bb      	str	r3, [r7, #24]
-	uint32_t* I2C1_SR2 = (uint32_t)0x40005418;
+	uint32_t* I2C1_SR2 = (uint32_t*)0x40005418;
  800154c:	4b46      	ldr	r3, [pc, #280]	; (8001668 <I2C_Read+0x134>)
  800154e:	617b      	str	r3, [r7, #20]
-	uint32_t* I2C1_DR = (uint32_t)0x40005410;
+	uint32_t* I2C1_DR = (uint32_t*)0x40005410;
  8001550:	4b46      	ldr	r3, [pc, #280]	; (800166c <I2C_Read+0x138>)
  8001552:	613b      	str	r3, [r7, #16]
 

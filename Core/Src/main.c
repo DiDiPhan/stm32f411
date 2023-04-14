@@ -137,9 +137,11 @@ int main(void)
   **/
 
   //I2C
-  const uint8_t WHO_AM_I = 0x4f;
-  const uint8_t addressSensor = 0b0011110;//0b0011001
+  const uint8_t WHO_AM_I = 0xf;
+  const uint8_t addressSensor = 0b0011001;
   const uint8_t data = I2C_Read(addressSensor, WHO_AM_I);
+//0011001 - 0xf
+//0011110 - 0x4f
 
   /* USER CODE END 2 */
 
